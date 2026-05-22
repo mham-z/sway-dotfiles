@@ -1,0 +1,47 @@
+background-color=#26233a
+text-color=#e0def4
+border-color=#26233a
+border-size=0
+border-radius=0,0,21,21
+progress-color=over #ffffff15
+
+anchor=top-center
+width=700
+height=42
+outer-margin=0
+margin=0
+padding=9,0,10,0
+
+layer=overlay
+
+format=<b>%s</b>  ·  %b
+
+font=Adwaita Sans 12
+
+default-timeout=5000
+group-by=app-name
+icon-path=/usr/share/icons/Papirus-Dark/
+max-icon-size=24
+max-visible=1
+
+[urgency=high]
+background-color=#c9456a
+default-timeout=0
+
+[mode=dnd]
+invisible=1
+
+[grouped=true]
+format=<b>[%g] %s</b>  ·  %b
+
+[body=]
+format=<b>%s</b>
+
+[grouped=true body=]
+format=<b>[%g] %s</b>
+
+[hidden]
+format=
+border-size=0
+background-color=#00000000
+border-color=#00000000

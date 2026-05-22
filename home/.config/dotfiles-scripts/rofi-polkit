@@ -1,0 +1,54 @@
+#! /bin/sh
+# This is a modified version of https://github.com/czaplicki/rofi-polkit-agent/
+# adapted to use tofi instead of rofi.
+
+case "$*" in 'h'|'help'|'-h'|'-help'|'--help')
+    echo 'Usage: rofi-polkit-agent [ROFI_OPTIONS]...
+Polkit agent using rofi for GUI.
+
+Start the polkit agent, with default options :
+  rofi-polkit-agent
+
+Start the polkit agent, with any additional argument passed directly to rofi :
+  rofi-polkit-agent -theme PATH -monitor NUM
+'
+esac
+
+if test "$1" != '_CALLED_INTERNALLY'; then
+
+    prepParams() { for i in "$@"; do printf "'%s' " "$i"; done }
+    parameters="$(prepParams "$@")"
+
+    uwsm app -- cmd-polkit-agent -s -c "$0 _CALLED_INTERNALLY $parameters*"
+    # exec cmd-polkit-agent -s -c 'rofi-polkit-agent _CALLED_INTERNALLY'
+else
+    # Remove $1 (_CALLED_INTERNALLY) from parameter array
+    shift 1
+
+    # Read incoming messages one by one (line by line)
+    # from stdin to variable $msg
+    while read -r msg; do
+        #  --- shellcheck disable=SC2210
+        if echo "$msg" | jq -e '.action == "request password"' 1>/dev/null 2>/dev/null
+        then
+            message="$(printf '%s' "$msg" | jq -rc '.message // "Authentication required"')"
+
+            # Combine message + prompt for better context
+            full_prompt="${message}"
+
+            # tofi password input (works reliably)
+            response="$(printf '' | tofi \
+                --prompt-text "${full_prompt} " \
+                --hide-input true \
+                --require-match false \
+                --fuzzy-match false -c ~/.config/tofi/polkit)"
+
+            # Cancel authentication if no password was given,
+            # otherwise respond with given password
+            if test -z "$response"
+            then echo '{"action":"cancel"}'
+            else echo "{\"action\":\"authenticate\",\"password\": \"$response\"}"
+            fi
+        fi
+    done
+fi

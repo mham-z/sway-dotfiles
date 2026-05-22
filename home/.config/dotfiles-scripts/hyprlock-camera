@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+CURRENT_ATTEMPTS="${1:-0}"
+TMP_FILE="/tmp/hyprlock_attempts"
+CAPTURE_DIR="$HOME/Pictures/hyprlock_captures"
+mkdir -p "$CAPTURE_DIR"
+
+if [ -f "$TMP_FILE" ]; then
+    LAST_ATTEMPTS=$(cat "$TMP_FILE")
+else
+    LAST_ATTEMPTS=0
+fi
+
+echo "$CURRENT_ATTEMPTS" > "$TMP_FILE"
+
+if [ "$CURRENT_ATTEMPTS" -gt "$LAST_ATTEMPTS" ] && [ "$CURRENT_ATTEMPTS" -gt 0 ]; then
+    TIMESTAMP=$(date +"%Y-%m-%d-at-%H-%M-%S")
+    VIDEO="$CAPTURE_DIR/lockfail-${TIMESTAMP}-attempt${CURRENT_ATTEMPTS}.mp4"
+
+    ffmpeg -f v4l2 -input_format mjpeg -framerate 60 -video_size 1280x720 \
+           -i /dev/video0 -t 5 -c:v libx264 -preset ultrafast \
+           -crf 23 -vf "format=yuv420p" "$VIDEO" >/dev/null 2>&1 &
+
+    disown
+fi

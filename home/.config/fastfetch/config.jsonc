@@ -1,0 +1,111 @@
+{
+    "$schema": "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/dev/doc/json_schema.json",
+    "logo": {
+        "type": "none"
+    },
+    "display": {
+        "separator": "   ",
+        "color": {
+            "separator": "1" // Bold
+        },
+        "constants": [
+            "───────────────────────────"
+        ],
+        "key": {
+            "type": "both",
+            "paddingLeft": 4
+        }
+    },
+    "modules": [
+        {
+            "type": "title",
+            "format": " {user-name-colored}{at-symbol-colored}{host-name-colored}"
+        },
+        {
+            "key": "OS           ",
+            "keyColor": "magenta",
+            "type": "os"
+        },
+        {
+            "key": "Machine      ",
+            "keyColor": "magenta",
+            "type": "host"
+        },
+        {
+            "key": "Kernel       ",
+            "keyColor": "magenta",
+            "type": "kernel"
+        },
+        {
+            "key": "Uptime       ",
+           "keyColor": "magenta",
+            "type": "uptime"
+        },
+        {
+            "type": "packages",
+            "key": "Packages     ",
+            "keyColor": "magenta"
+        },
+        {
+            "key": "Resolution   ",
+            "keyColor": "magenta",
+            "type": "display",
+            "compactType": "original-with-refresh-rate"
+        },
+        {
+            "key": "WM           ",
+            "keyColor": "magenta",
+            "type": "wm"
+        },
+        {
+            "key": "DE           ",
+            "keyColor": "magenta",
+            "type": "de"
+        },
+        {
+            "key": "Shell        ",
+            "keyColor": "magenta",
+            "type": "shell"
+        },
+        {
+            "key": "Terminal     ",
+            "keyColor": "magenta",
+            "type": "terminal"
+        },
+        {
+            "key": "CPU          ",
+            "keyColor": "magenta",
+            "type": "cpu"
+        },
+        {
+            "key": "GPU          ",
+            "keyColor": "magenta",
+            "type": "gpu"
+        },
+        {
+            "key": "Memory       ",
+            "keyColor": "magenta",
+            "type": "memory"
+        },
+        {
+            "key": "Disk         ",
+            "type": "disk",
+            "keyColor": "magenta",
+            "folders": "/"
+        },
+        {
+            "key": "Local IP     ",
+            "keyColor": "magenta",
+            "type": "localip",
+            "compact": true
+        },
+        {
+            "type": "colors",
+            "paddingLeft": 0,
+            "symbol": "circle"
+        },
+        {
+            "type": "break"
+        }
+    ]
+}

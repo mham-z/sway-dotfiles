@@ -1,0 +1,8 @@
+#!/bin/bash
+LOG_DIR="$HOME/.cache/tofi-runlog"
+LATEST=$(ls -t "$LOG_DIR"/tofi-runlog-*.log 2>/dev/null | head -n1)
+if [ -n "$LATEST" ]; then
+    kitty sh -c "less -f \"$LATEST\""
+else
+    echo "No tofi-run logs yet."
+fi
