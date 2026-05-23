@@ -3,6 +3,6 @@ if status is-interactive
 end
 
 if uwsm check may-start
-    exec uwsm start hyprland.desktop
+    exec uwsm start sway.desktop
 end
 fish_add_path /home/hamza/.spicetify
