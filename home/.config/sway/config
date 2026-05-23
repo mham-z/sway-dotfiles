@@ -17,16 +17,16 @@ set $highlightmed   #403d52
 set $highlighthigh  #524f67
 
 font pango:NotoSansMono 10
-
 output * bg ~/Pictures/wallpaper.png fill
+
 
 exec uwsm finalize sway
 exec uwsm app -- foot --server
 exec ~/.config/sway/workspace-renamer.py
 exec swayidle -w \
-	timeout 300 'swaylock -f -c 000000' \
+	timeout 300 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92' \
 	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-	before-sleep 'swaylock -f -c 000000'
+	before-sleep 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92'
 
 
 input type:touchpad {
@@ -36,22 +36,41 @@ input type:touchpad {
 	middle_emulation enabled
 }
 
-input type:keyboard {
-	xkb_layout "eu"
+input 1133:49298:Logitech_G102_LIGHTSYNC_Gaming_Mouse {
+	natural_scroll disabled
+	dwt false
+	accel_profile "flat"
+	pointer_accel 0
 }
-#
-# You can also configure each device individually.
-# Read `man 5 sway-input` for more information about this section.
+
+input type:keyboard {
+	xkb_layout "us"
+}
 
 
-bindsym $mod+q exec foot
-bindsym $mod+c kill
+bindsym $mod+Q exec foot
+bindsym $mod+C kill
+bindsym $mod+R reload
+
 bindsym $mod+SPACE exec uwsm app -- $(tofi-drun -c ~/.config/tofi/drun)
 bindsym $mod+E exec ~/.config/dotfiles-scripts/tofi-runlog
 bindsym $mod+Shift+E exec ~/.config/dotfiles-scripts/tofi-runlog-viewer
-bindsym $mod+R reload
+bindsym $mod+Shift+S exec flameshot gui
+bindsym Print exec flameshot gui
 
-bindsym $mod+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+B splith
+bindsym $mod+V splitv
+bindsym $mod+G layout toggle split tabbed stacking
+bindsym $mod+S fullscreen
+bindsym $mod+F floating toggle
+bindsym $mod+Shift+F focus mode_toggle
+bindsym $mod+A focus parent
+
+bindsym $mod+Ctrl+Alt+H exec uwsm stop & systemctl poweroff
+bindsym $mod+Ctrl+Alt+E exec uwsm stop
+bindsym $mod+Ctrl+Alt+R exec uwsm stop & systemctl reboot
+bindsym $mod+Ctrl+Alt+L exec wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92
+bindsym $mod+Ctrl+Alt+S exec systemctl suspend
 
 floating_modifier $mod normal
 
@@ -80,7 +99,6 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1, workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2, workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3, workspace number 3
@@ -93,37 +111,19 @@ bindsym $mod+Shift+9 move container to workspace number 9, workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10, workspace number 10
 
 
-bindsym $mod+b splith
-bindsym $mod+v splitv
-
-# Make the current focus fullscreen
-bindsym $mod+s fullscreen
-
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+F floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+Shift+F focus mode_toggle
-
-# Move focus to the parent container
-bindsym $mod+a focus parent
-
-
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-# Special keys to adjust brightness via brightnessctl
+
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-# Special key to take a screenshot with grim
-bindsym Print exec grim
 
 
 # target                 title          bg            text   indicator       border
 client.focused           $pine         $pine         $text  $foam             $pine
 client.focused_inactive  $muted        $muted        $text  $subtle           $muted
-client.unfocused         $highlightmed      $highlightmed      $text  $highlighthigh            $highlightmed
+client.unfocused         $highlightmed $highlightmed $text  $highlighthigh    $highlightmed
 client.urgent            $text         $base         $text  $love             $love
 client.placeholder       $base         $base         $text  $overlay          $overlay
 client.background        $base
@@ -134,10 +134,6 @@ default_floating_border normal 2
 gaps inner 4px
 gaps outer 0px
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 bar {
 	height 24
 	position top
@@ -145,8 +141,6 @@ bar {
 	gaps 0
 	workspace_min_width 24
 
-	# When the status_command prints a new line to stdout, swaybar updates.
-	# The default just shows the current date and time.
 	status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
 	colors {
