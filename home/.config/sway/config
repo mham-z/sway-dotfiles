@@ -16,7 +16,7 @@ set $highlightlow   #21202e
 set $highlightmed   #403d52
 set $highlighthigh  #524f67
 
-font pango:monospace 10
+font pango:NotoSansMono 10
 
 output * bg ~/Pictures/wallpaper.png fill
 
@@ -46,10 +46,12 @@ input type:keyboard {
 
 bindsym $mod+q exec foot
 bindsym $mod+c kill
-bindsym $mod+SPACE exec uwsm app -- $(tofi-drun)
+bindsym $mod+SPACE exec uwsm app -- $(tofi-drun -c ~/.config/tofi/drun)
+bindsym $mod+E exec ~/.config/dotfiles-scripts/tofi-runlog
+bindsym $mod+Shift+E exec ~/.config/dotfiles-scripts/tofi-runlog-viewer
 bindsym $mod+R reload
 
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+m exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 floating_modifier $mod normal
 
