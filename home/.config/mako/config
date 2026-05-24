@@ -19,10 +19,10 @@ format=<b>%s</b>\n%b
 font=Adwaita Mono 12
 
 default-timeout=5000
-group-by=app-name
+group-by=summary
 icon-path=/usr/share/icons/Papirus-Dark/
 max-icon-size=32
-max-visible=10
+max-visible=5
 
 [urgency=high]
 border-color=#c9456a
