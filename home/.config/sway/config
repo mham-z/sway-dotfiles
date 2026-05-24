@@ -163,4 +163,9 @@ bar {
 		inactive_workspace $overlay $overlay $text
 		urgent_workspace $love $love $base
 	}
+
+	tray {
+		tray_padding 3
+		icon_theme Papirus-dark
+	}
 }
