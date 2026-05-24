@@ -47,6 +47,11 @@ input type:keyboard {
 	xkb_layout "us"
 }
 
+input type:tablet_tool {
+	map_to_output eDP-1
+	calibration_matrix -1 0 1 0 -1 1
+}
+
 
 bindsym $mod+Q exec foot
 bindsym $mod+C kill
