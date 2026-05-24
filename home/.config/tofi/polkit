@@ -12,11 +12,11 @@
 	# If a path is given, tofi will startup much quicker, but any
 	# characters not in the chosen font will fail to render.
 	#
-	# Ot3herwise, fonts are interpreted in Pango format.
-	font = "/usr/share/fonts/adwaita-sans-fonts/AdwaitaSans-Regular.ttf"
+	# Otherwise, fonts are interpreted in Pango format.
+	font = "/usr/share/fonts/google-noto/NotoSansMono-Regular.ttf"
 
 	# Point size of text.
-	font-size = 12
+	font-size = 10
 
 	# Comma separated list of OpenType font feature settings to apply,
 	# if supported by the chosen font. The format is similar to the CSS
@@ -80,7 +80,7 @@
 	placeholder-background-corner-radius = 0
 
 	# Input text theme
-	input-color = #ebbcba   
+	input-color = #ebbcba
 	input-background = #00000000
 	input-background-padding = 0
 	input-background-corner-radius = 0
@@ -103,9 +103,9 @@
 
 	# Selection text
 	selection-color = #191724
-	selection-background = #eb6f92
-	selection-background-padding = 0,6,1,6
-	selection-background-corner-radius = 3
+	selection-background = #ebbcba
+	selection-background-padding = 6
+	selection-background-corner-radius = 0
 
 	# Matching portion of selection text
 	selection-match-color = #00000000
@@ -154,7 +154,7 @@
 	num-results = 0
 
 	# Spacing between results in pixels. Can be negative.
-	result-spacing = 20
+	result-spacing = 12
 
 	# List results horizontally.
 	horizontal = true
@@ -166,37 +166,37 @@
 ### Window theming
 #
 	# Width and height of the window. Can be pixels or a percentage.
-	width = 50%
-	height = 34
-	
+	width = 100%
+	height = 24
+
 	# Window background color
-	background-color = #1f1d2e
+	background-color = #26233a
 
 	# Width of the border outlines in pixels.
 	outline-width = 0
 
 	# Border outline color
-	outline-color = #c4a7e719
+	outline-color = #080800
 
 	# Width of the border in pixels.
-	border-width = 1
+	border-width = 0
 
 	# Border color
-	border-color = #2E2A3F
+	border-color = #c4a7e719
 
 	# Radius of window corners in pixels.
-	corner-radius = 18
+	corner-radius = 0
 
 	# Padding between borders and text. Can be pixels or a percentage.
-	padding-top = 1
-	padding-bottom = 1
+	padding-top = 3
+	padding-bottom = 0
 	padding-left = 6
-	padding-right = 0
+	padding-right = 6
 
 	# Whether to clip text drawing to be within the specified padding. This
 	# is mostly important for allowing text to be inset from the border,
 	# while still allowing text backgrounds to reach right to the edge.
-	clip-to-padding = true
+	clip-to-padding = false
 
 	# Whether to scale the window by the output's scale factor.
 	scale = true
@@ -222,12 +222,12 @@
 	#
 	# Values greater than 0 are only meaningful when tofi is anchored to a
 	# single edge.
-	exclusive-zone = 0
+	exclusive-zone = -1
 
 	# Window offset from edge of screen. Only has an effect when anchored
 	# to the relevant edge. Can be pixels or a percentage.
-	margin-top = 4
-	margin-bottom = 10
+	margin-top = 0
+	margin-bottom = 0
 	margin-left = 10
 	margin-right = 10
 
