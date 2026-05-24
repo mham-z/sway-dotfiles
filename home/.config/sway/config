@@ -143,13 +143,15 @@ gaps inner 4px
 gaps outer 0px
 
 bar {
+	font pango:NotoSansM Nerd Font 10
 	height 24
 	position top
 	mode dock
 	gaps 0
 	workspace_min_width 24
 
-	status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+	status_command cd ~/.config/luastatus/ && exec luastatus-i3-wrapper -B no_separators \
+		datetime.lua notif.lua backlight.lua pulse.lua caffeine.lua bluetooth.lua nm.lua battery.lua
 
 	colors {
 		background $base
