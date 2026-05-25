@@ -69,6 +69,9 @@ bindsym $mod+Shift+H exec cliphist wipe && notify-send "cliphist" "Clipboard his
 bindsym $mod+D exec wl-kbptr
 bindsym $mod+Shift+D exec wl-kbptr-sway-active-win
 
+bindsym $mod+K exec swaymsg "output eDP-1 mode --custom 1920x1080@60.049Hz"
+bindsym $mod+L exec swaymsg "output eDP-1 mode --custom 1280x720@60.049Hz"
+
 bindsym $mod+B splith
 bindsym $mod+V splitv
 bindsym $mod+G layout toggle split tabbed stacking
