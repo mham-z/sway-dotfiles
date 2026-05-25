@@ -143,7 +143,7 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 bindsym --locked XF86AudioPause exec playerctl play-pause
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 
-
+assign [app_id="^vesktop$"] 2
 
 # target                 title          bg            text   indicator       border
 client.focused           $pine         $pine         $text  $foam             $pine
