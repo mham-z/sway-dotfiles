@@ -17,7 +17,7 @@ set $highlightmed   #403d52
 set $highlighthigh  #524f67
 
 font pango:NotoSansMono 10
-output * bg ~/Pictures/wallpaper.png fill
+output * bg $surface solid_color
 
 
 exec uwsm finalize sway
