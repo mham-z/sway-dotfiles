@@ -33,6 +33,7 @@ exec wl-paste --watch bash -c 'sleep 0.1 && cliphist store'
 input type:touchpad {
 	dwt enabled
 	tap enabled
+	drag_lock disabled
 	natural_scroll enabled
 	middle_emulation enabled
 }
