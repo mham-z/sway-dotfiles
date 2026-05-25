@@ -29,6 +29,8 @@ exec swayidle -w \
 	before-sleep 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92'
 exec ~/.config/dotfiles-scripts/rofi-polkit
 exec wl-paste --watch bash -c 'sleep 0.1 && cliphist store'
+# disable power button
+exec systemd-inhibit --who="sway" --why="user" --what=handle-power-key --mode=block sleep infinity
 
 input type:touchpad {
 	dwt enabled
