@@ -27,7 +27,7 @@ def update_workspaces(sway, event=None):
                 app_names.append(name)
         
         if app_names:
-            new_name = f"{ws_num}: {', '.join(app_names)}"
+            new_name = f"{ws_num}: [{', '.join(app_names)}]"
         else:
             new_name = f"{ws_num}"
             
