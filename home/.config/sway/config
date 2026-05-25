@@ -30,6 +30,7 @@ exec swayidle -w \
 exec ~/.config/dotfiles-scripts/rofi-polkit
 exec wl-paste --watch bash -c 'sleep 0.1 && cliphist store'
 exec wlsunset -l 25 -L 67
+exec udiskie -s
 
 # disable power button
 exec systemd-inhibit --who="sway" --why="user" --what=handle-power-key --mode=block sleep infinity
