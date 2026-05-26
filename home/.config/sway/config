@@ -84,6 +84,7 @@ bindsym $mod+S fullscreen
 bindsym $mod+F floating toggle
 bindsym $mod+Shift+F focus mode_toggle
 bindsym $mod+A focus parent
+bindsym $mod+Shift+A focus child
 
 bindsym $mod+Ctrl+Alt+H exec uwsm stop & systemctl poweroff
 bindsym $mod+Ctrl+Alt+E exec uwsm stop
@@ -107,6 +108,11 @@ bindsym $mod+Ctrl+Left resize shrink width 20px
 bindsym $mod+Ctrl+Down resize grow height 20px
 bindsym $mod+Ctrl+Up resize shrink height 20px
 bindsym $mod+Ctrl+Right resize grow width 20px
+
+bindsym $mod+Alt+Left focus output left
+bindsym $mod+Alt+Down focus output down
+bindsym $mod+Alt+Up focus output up
+bindsym $mod+Alt+Right focus output right
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
