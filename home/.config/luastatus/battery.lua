@@ -15,7 +15,7 @@ widget = luastatus.require_plugin('battery-linux').widget{
 
 		if perc <= 10 then
 			os.execute(string.format(
-				'notify-send -u critical -r 99919 "%d%% left" "Very low battery. Charge immediately, or the device will shut down!"',
+				'notify-send -u critical -h string:x-canonical-private-synchronous:battery-alert "%d%% left" "Very low battery. Charge immediately, or the device will shut down!" && pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga',
 				perc
 			))
 

@@ -16,7 +16,7 @@ widget = {
 			local ssid, signal = line:match('^yes:(.+):(%d+)$')
 			local rssi = tonumber(signal) or 0
 			local name = ssid or '?'
-			if #name > 5 then name = name:sub(1, 5) .. '...' end
+			if #name > 5 then name = name:sub(1, 5) .. '…' end
 			return {full_text = '[NET: ' .. name .. ' ' .. rssi .. '%]', color = '#9ccfd8'}
 		end
 
