@@ -15,6 +15,8 @@ widget = {
     event = function(t)
         if t.button == 1 then
             os.execute('pactl set-sink-mute @DEFAULT_SINK@ toggle')
+        elseif t.button == 3 then
+            os.execute("foot -e pulsemixer &")
         elseif t.button == 4 then
             os.execute('pactl set-sink-volume @DEFAULT_SINK@ +5%')
         elseif t.button == 5 then
