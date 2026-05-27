@@ -1,0 +1,2 @@
+bindsym $mod+K exec swaymsg "output * mode 1920x1080"
+bindsym $mod+L exec swaymsg "output * mode 1280x720"
