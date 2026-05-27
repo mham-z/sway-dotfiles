@@ -14,10 +14,12 @@ widget = luastatus.require_plugin('battery-linux').widget{
 		local color = "#9ccfd8"
 
 		if perc <= 10 then
-			os.execute(string.format(
-				'notify-send -u critical -h string:x-canonical-private-synchronous:battery-alert "%d%% left" "Very low battery. Charge immediately, or the device will shut down!" && pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga',
-				perc
-			))
+			if t.status ~= "Charging" then
+				os.execute(string.format(
+					'notify-send -u critical -h string:x-canonical-private-synchronous:battery-alert "%d%% left" "Very low battery. Charge immediately, or the device will shut down!" && pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga',
+					perc
+				))
+			end
 
 			color = "#eb6f92"
 		elseif perc <= 20 then
