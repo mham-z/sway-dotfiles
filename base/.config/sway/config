@@ -175,7 +175,7 @@ bar {
 	workspace_min_width 24
 
 	status_command cd ~/.config/luastatus/ && exec luastatus-i3-wrapper -B no_separators \
-		datetime.lua notif.lua caffeine.lua backlight.lua pulse.lua bluetooth.lua nm.lua battery.lua
+		datetime.lua notif.lua caffeine.lua tuned.lua backlight.lua pulse.lua bluetooth.lua nm.lua battery.lua
 
 	colors {
 		background $base
