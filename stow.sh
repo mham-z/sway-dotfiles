@@ -13,7 +13,7 @@ stow -v -t ~ base 2>&1 | sed "s/^/       /"
 echo -e "${RESET}"
 
 if [ -d "$HOSTNAME" ]; then
-	echo -e "    ${GREEN}Stowing [${HOSTNAME}]...${BLUE}"
+	echo -e "    ${GREEN}Stowing '${HOSTNAME}'...${BLUE}"
 	stow -v -t ~ "$HOSTNAME" 2>&1 | sed "s/^/          /"
 else
 	echo -e "    ${YELLOW}[!] Profile '${HOSTNAME}' not found.${RESET}"
