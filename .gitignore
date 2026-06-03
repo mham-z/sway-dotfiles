@@ -1,3 +1,6 @@
-home/.config/xournalpp/settings.xml
-home/.config/fish/fish_variables
+base/.config/xournalpp/settings.xml
+base/.config/fish/fish_variables
 .directory
+
+# VSCode Insiders auto-inserts this file for some reason
+base/.config/fish/completions/copilot.fish
