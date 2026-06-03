@@ -8,16 +8,16 @@ LOG_FILE="$LOG_DIR/tofi-runlog-$(date +%Y-%m-%d-at-%H-%M-%S).log"
 CHOICE=$(tofi-run -c ~/.config/tofi/run) 
 
 if [ -n "$CHOICE" ]; then
-    bash -c '
-        eval "$1" 2>&1 | tee -a "$2" &
-        CHILD_PID=$!
-        echo "-- Running <$1> with PID $CHILD_PID --" >> "$2"
-        echo "" >> "$2"
-        wait $CHILD_PID
-        EXIT_CODE=$?
-        echo "" >> "$2"
-        echo "-- END OF LOG --" >> "$2"
-        echo "Command finished at $(date)" >> "$2"
-        echo "Exit code: $EXIT_CODE" >> "$2"
-    ' _ "$CHOICE" "$LOG_FILE"
+	bash -c '
+		eval "$1" 2>&1 | tee -a "$2" &
+		CHILD_PID=$!
+		echo "-- Running <$1> with PID $CHILD_PID --" >> "$2"
+		echo "" >> "$2"
+		wait $CHILD_PID
+		EXIT_CODE=$?
+		echo "" >> "$2"
+		echo "-- END OF LOG --" >> "$2"
+		echo "Command finished at $(date)" >> "$2"
+		echo "Exit code: $EXIT_CODE" >> "$2"
+	' _ "$CHOICE" "$LOG_FILE"
 fi

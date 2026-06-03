@@ -66,7 +66,7 @@ _build_prompt() {
 	# actual rendering
 	local thing="${blue}bash${brblack}"
 	if (( EUID == 0 )); then
-    	thing="${red}bash • ROOT${brblack}"
+		thing="${red}bash • ROOT${brblack}"
 	fi
 
 	local line1="${brblack}╭─[${thing}] [${cyan}${short_pwd}${brblack}]"
