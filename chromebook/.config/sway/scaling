@@ -1,0 +1,3 @@
+set $font pango:NotoSansM Nerd Font 9
+set $bar_height 21
+set $bar_workspace_min_width 22
