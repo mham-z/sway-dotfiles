@@ -16,7 +16,6 @@
 	font = "Noto Sans Mono"
 
 	# Point size of text.
-	font-size = 10
 
 	# Comma separated list of OpenType font feature settings to apply,
 	# if supported by the chosen font. The format is similar to the CSS
@@ -158,7 +157,7 @@
 	result-spacing = 12
 
 	# List results horizontally.
-	horizontal = false
+	horizontal = true
 
 	# Minimum width of input in horizontal mode.
 	min-input-width = 14
@@ -167,8 +166,7 @@
 ### Window theming
 #
 	# Width and height of the window. Can be pixels or a percentage.
-	width = 100%
-	height = 247
+	include = ./topsize
 
 	# Window background color
 	background-color = #191724
@@ -189,10 +187,6 @@
 	corner-radius = 0
 
 	# Padding between borders and text. Can be pixels or a percentage.
-	padding-top = 2
-	padding-bottom = 0
-	padding-left = 6
-	padding-right = 6
 
 	# Whether to clip text drawing to be within the specified padding. This
 	# is mostly important for allowing text to be inset from the border,
