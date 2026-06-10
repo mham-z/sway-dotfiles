@@ -154,7 +154,7 @@ bindsym --locked XF86AudioPause exec playerctl play-pause
 bindsym --locked XF86AudioPlay exec playerctl play-pause
 
 
-assign [app_id="^brave-browser$"] workspace number 1
+assign [app_id="^app.zen_browser.zen$"] workspace number 1
 assign [app_id="^vesktop$"] workspace number 2
 assign [app_id="^com.rtosta.zapzap$"] workspace number 2
 
