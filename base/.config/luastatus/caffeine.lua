@@ -6,9 +6,9 @@ widget = {
 	cb = function()
 		local f = io.open(pid_file, 'r')
 		if f then f:close()
-			return {full_text = '[CAF: on]', color = '#f6c177'}
+			return {full_text = '󰅶', color = '#f6c177'}
 		end
-		return {full_text = '[CAF: off]', color = '#ebbcba'}
+		return {full_text = '󰾪', color = '#ebbcba'}
 	end,
 	event = function(t)
 		if t.button == 1 then

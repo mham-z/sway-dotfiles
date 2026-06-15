@@ -8,9 +8,9 @@ widget = {
 		local mode = f:read('*all'); f:close()
 		local dnd = mode and mode:match('dnd')
 		if dnd then
-			return {full_text = '[DND: on]'; color = '#f6c177'; seperator = false; seperator_block_width = 12;}
+			return {full_text = '󰂛'; color = '#f6c177'; seperator = false; seperator_block_width = 12;}
 		end
-		return {full_text = '[DND: off]'; color = '#ebbcba'; seperator = false; seperator_block_width = 12;}
+		return {full_text = '󰂚'; color = '#ebbcba'; seperator = false; seperator_block_width = 12;}
 	end;
 	event = function(t)
 		if t.button == 1 then

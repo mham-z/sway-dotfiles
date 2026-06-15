@@ -8,9 +8,9 @@ widget = {
 		local vol = fv:read('*line'); fv:close()
 		local pct = vol and vol:match('(%d+)%%') or '?'
 		if mute and mute:match('yes') then
-			return {full_text = '[VOL: mute]', color = '#908caa'}
+			return {full_text = '│ MUTE', color = '#908caa'}
 		end
-		return {full_text = '[VOL: ' .. pct .. '%]', color = '#ebbcba'}
+		return {full_text = '│ VOL ' .. pct .. '', color = '#ebbcba'}
 	end,
 	event = function(t)
 		if t.button == 1 then

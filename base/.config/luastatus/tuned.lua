@@ -1,8 +1,17 @@
 local profiles = {
 	["powersave"] = "balanced-battery";
 	["balanced-battery"] = "balanced";
-	["balanced"] = "throughput-performance";
+	["balanced"] = "desktop";
+	["desktop"] = "throughput-performance";
 	["throughput-performance"] = "powersave";
+}
+
+local translate = {
+	["powersave"] = "SAV";
+	["balanced-battery"] = "ECO";
+	["balanced"] = "BAL";
+	["desktop"] = "WRK";
+	["throughput-performance"] = "MAX";
 }
 
 widget = {
@@ -19,7 +28,7 @@ widget = {
 			profile = "balanced"
 		end
 
-		return {full_text = "[PWR: " .. profile .. "]"; instance = profile; color = '#ebbcba'; seperator = false; seperator_block_width = 12}
+		return {full_text = "" .. (translate[profile] or profile) .. ""; instance = profile; color = '#ebbcba'; seperator = false; seperator_block_width = 12}
 	end;
 	event = function(ctx)
 		if ctx.button == 1 then
