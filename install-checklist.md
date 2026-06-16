@@ -3,6 +3,7 @@ These dotfiles are meant for Fedora Linux 43 or newer. I will only document the 
 ## DNF Packages
 - stow
 - sway
+- cliphist
 - python
 - xdg-desktop-portal-wlr
 - uwsm
