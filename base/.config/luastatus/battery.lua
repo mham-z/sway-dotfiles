@@ -9,7 +9,7 @@ widget = luastatus.require_plugin('battery-linux').widget{
 			icon = "+"
 		end
 
-		local str = string.format("│ BAT0 %s%d%%", icon, perc)
+		local str = string.format("BAT0 %s%d%%", icon, perc)
 
 		local color = "#9ccfd8"
 
