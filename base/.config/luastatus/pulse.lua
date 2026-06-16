@@ -10,7 +10,7 @@ widget = {
 		if mute and mute:match('yes') then
 			return {full_text = 'MUTE', color = '#908caa'}
 		end
-		return {full_text = 'VOL ' .. pct .. '', color = '#ebbcba'}
+		return {full_text = 'VOL ' .. pct .. '%', color = '#ebbcba'}
 	end,
 	event = function(t)
 		if t.button == 1 then
