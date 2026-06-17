@@ -7,7 +7,6 @@ These dotfiles are meant for Fedora Linux 43 or newer. I will only document the 
 - python
 - xdg-desktop-portal-wlr
 - xdg-desktop-portal-gtk
-- uwsm
 - mako
 - fish
 - foot

@@ -24,20 +24,20 @@ font $font
 output * bg $surface solid_color
 
 
-exec uwsm finalize sway
+# exec uwsm finalize sway
 
-exec uwsm app -- swayidle -w \
+exec swayidle -w \
 	timeout 300 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92' \
 	timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92'
 
-exec uwsm app -- ~/scripts/workspace-renamer.py
-exec uwsm app -- ~/scripts/rofi-polkit
+exec ~/scripts/workspace-renamer.py
+exec ~/scripts/rofi-polkit
 
-exec uwsm app -- foot --server
-exec uwsm app -- wl-paste --watch bash -c 'sleep 0.1 && cliphist store'
-exec uwsm app -- wlsunset -l 25 -L 67
-exec uwsm app -- udiskie -s
+exec foot --server
+exec wl-paste --watch bash -c 'sleep 0.1 && cliphist store'
+exec wlsunset -l 25 -L 67
+exec udiskie -s
 
 # disable power button
 exec systemd-inhibit --who="sway" --why="user" --what=handle-power-key --mode=block sleep infinity
@@ -71,7 +71,7 @@ bindsym $mod+Q exec foot
 bindsym $mod+C kill
 bindsym $mod+R reload
 
-bindsym $mod+SPACE exec uwsm app -- $(tofi-drun -c ~/.config/tofi/drun)
+bindsym $mod+SPACE exec bash -c "$(tofi-drun -c ~/.config/tofi/drun)"
 bindsym $mod+E exec ~/scripts/tofi-runlog
 bindsym $mod+Shift+E exec ~/scripts/tofi-runlog-viewer
 bindsym $mod+Shift+S exec flameshot gui
