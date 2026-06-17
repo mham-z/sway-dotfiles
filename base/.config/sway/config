@@ -67,7 +67,7 @@ input type:tablet_tool {
 }
 
 
-bindsym $mod+Q exec foot
+bindsym $mod+Q exec footclient
 bindsym $mod+C kill
 bindsym $mod+R reload
 
