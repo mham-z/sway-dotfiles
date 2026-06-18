@@ -19,7 +19,7 @@ if test "$1" != '_CALLED_INTERNALLY'; then
     prepParams() { for i in "$@"; do printf "'%s' " "$i"; done }
     parameters="$(prepParams "$@")"
 
-    uwsm app -- cmd-polkit-agent -s -c "$0 _CALLED_INTERNALLY $parameters*"
+    cmd-polkit-agent -s -c "$0 _CALLED_INTERNALLY $parameters*"
     # exec cmd-polkit-agent -s -c 'rofi-polkit-agent _CALLED_INTERNALLY'
 else
     # Remove $1 (_CALLED_INTERNALLY) from parameter array
