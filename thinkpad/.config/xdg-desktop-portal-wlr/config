@@ -1,6 +1,0 @@
-[screencast]
-max_fps=60
-exec_before=notify-send -h string:x-canonical-private-synchronous:screencast-alert "Screencast" "Screencast started"
-exec_after=notify-send -h string:x-canonical-private-synchronous:screencast-alert "Screencast" "Screencast ended"
-chooser_type=dmenu
-chooser_cmd=tofi -c ~/.config/tofi/xdp-wlr
