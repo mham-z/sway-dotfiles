@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import i3ipc
+from collections import Counter  # Added to easily count duplicate apps
+
 sway = i3ipc.Connection()
 
 def get_app_name(leave):
@@ -19,11 +21,21 @@ def update_workspaces(sway, event=None):
 	
 	for workspace in tree.workspaces():
 		ws_num = workspace.num
-		app_names = []
+		raw_names = []
 
 		for leave in workspace.descendants():
-			name = get_app_name(leave)
-			if name: # and name not in app_names
+			if leave.app_id or leave.window_class or leave.window:
+				name = get_app_name(leave)
+				if name:
+					raw_names.append(name)
+		
+		counts = Counter(raw_names)
+		app_names = []
+		
+		for name, count in counts.items():
+			if count > 1:
+				app_names.append(f"{name}({count})")
+			else:
 				app_names.append(name)
 		
 		if app_names:
