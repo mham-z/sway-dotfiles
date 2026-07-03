@@ -1,24 +1,20 @@
 #!/bin/bash
 
+DIR=$(cd -- "$(dirname -- "${BASH_SOURCE}")" &>/dev/null && pwd)
 HOSTNAME=$(cat /proc/sys/kernel/hostname)
 RESET="\033[0m"
 GREEN="\033[32m"
 BLUE="\033[34m"
-YELLOW="\033[33m"
 
-echo -e "Targeting '${HOSTNAME}'\n"
+DRY_RUN=""
+for arg in "$@"; do
+    if [ "$arg" = "-n" ] || [ "$arg" = "--dry-run" ]; then
+        DRY_RUN="-n"
+        echo -e "-- DRY-RUN --"
+    fi
+done
 
-echo -e "    ${GREEN}Stowing 'base' profile...${BLUE}"
-stow -v -t ~ base 2>&1 | sed "s/^/       /"
-echo -e "${RESET}"
-
-if [ -d "$HOSTNAME" ]; then
-	echo -e "    ${GREEN}Stowing '${HOSTNAME}'...${BLUE}"
-	stow -v -t ~ "$HOSTNAME" 2>&1 | sed "s/^/          /"
-else
-	echo -e "    ${YELLOW}[!] Profile '${HOSTNAME}' not found.${RESET}"
-	echo -e "    ${GREEN}Stowing 'fallback'...${BLUE}"
-	stow -v -t ~ fallback 2>&1 | sed "s/^/       /"
-fi
+echo -e "    ${GREEN}Stowing 'main' profile...${BLUE}"
+stow $DRY_RUN -v -d "$DIR" -t ~ main 2>&1 | sed "s/^/       /"
 
 echo -e "\n${RESET}Complete!"
