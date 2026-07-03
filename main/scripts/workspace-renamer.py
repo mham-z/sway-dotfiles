@@ -21,9 +21,9 @@ def update_workspaces(sway, event=None):
 		ws_num = workspace.num
 		app_names = []
 
-		for leave in workspace.leaves():
+		for leave in workspace.descendants():
 			name = get_app_name(leave)
-			if name and name not in app_names:
+			if name: # and name not in app_names
 				app_names.append(name)
 		
 		if app_names:
