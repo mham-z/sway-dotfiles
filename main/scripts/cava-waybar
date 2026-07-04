@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+bar="▁▂▃▄▅▆▇█"
+dict="s/;//g;"
+
+for ((i=0; i<${#bar}; i++)); do
+	dict+="s/$i/${bar:i:1}/g;"
+done
+
+channel=""
+
+while getopts "lr" opt; do
+	case "$opt" in
+		l)
+			channel="left"
+			;;
+		r)
+			channel="right"
+			;;
+		*)
+			echo "Usage: $0 [-l | -r]"
+			exit 1
+			;;
+	esac
+done
+
+config_file="/tmp/polybar_cava_${channel:-stereo}.conf"
+
+cat > "$config_file" <<EOF
+[general]
+bars = 20
+framerate = 30
+autosens = 0
+sensitivity = 400
+smoothing = 0
+gradient = 1
+
+[smoothing]
+monstercat = 0
+integral = 0
+gravity = 0
+
+[output]
+method = raw
+bar_delimiter = 0
+raw_target = /dev/stdout
+data_format = ascii
+ascii_max_range = 7
+EOF
+
+if [[ -n "$channel" ]]; then
+cat >> "$config_file" <<EOF
+channels = mono
+mono_option = $channel
+reverse = $([ "$channel" = "left" ] && echo 1 || echo 0)
+EOF
+fi
+
+cava -p "$config_file" | while read -r line; do
+    for ((i=0; i<${#bar}; i++)); do
+        line="${line//$i/${bar:i:1}}"
+    done
+    echo "$line"
+done

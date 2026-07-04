@@ -175,39 +175,7 @@ gaps inner 2px
 gaps outer 0px
 
 bar {
-	font $font
-	height $bar_height
-	position top
-	mode dock
-	gaps 0
-	workspace_min_width $bar_workspace_min_width
-
-	status_command cd ~/.config/luastatus/ && exec luastatus-i3-wrapper -B no_separators \
-		notif.lua caffeine.lua \
-		s.lua \
-		tuned.lua s-rose.lua pulse.lua \
-		s.lua \
-		bluetooth.lua s-foam.lua nm.lua s-foam.lua battery.lua \
-		s.lua \
-		datetime.lua
-
-	colors {
-		background $base
-		statusline $text
-		separator $text
-		focused_background $base
-		focused_statusline $iris
-		focused_separator $text
-		focused_workspace $iris $iris $base
-		active_workspace $overlay $overlay $text
-		inactive_workspace $overlay $overlay $text
-		urgent_workspace $love $love $base
-	}
-
-	tray {
-		tray_padding 3
-		icon_theme Papirus-dark
-	}
+	swaybar_command waybar
 }
 
 

@@ -1,0 +1,149 @@
+[
+	{
+		"position": "top",
+		"layer": "top",
+		"height": 24,
+		
+		"modules-left": ["custom/cava-left"],
+		"modules-center": ["sway/workspaces", "sway/mode"],
+		"modules-right": ["custom/cava-right"],
+
+		"custom/cava-right": {
+			"format": "{}",
+			"exec": "~/scripts/cava-waybar -r"
+		},
+
+		"custom/cava-left": {
+			"format": "{}",
+			"exec": "~/scripts/cava-waybar -l"
+		}
+	},
+	{
+		"position": "bottom",
+		"layer": "top",
+		"height": 24,
+		"fixed-center": false,
+
+		"modules-left": ["tray", "custom/s-gray", "power-profiles-daemon", "custom/s-rose", "custom/notifs", "idle_inhibitor", "custom/updates"],
+		"modules-center": ["custom/s-gray"],
+		"modules-right": [
+			"wireplumber#sink",
+			"custom/s-rose",
+			"wireplumber#source",
+			"custom/s-gray",
+			"bluetooth",
+			"custom/s-foam",
+			"network#wlan",
+			"custom/s-foam",
+			"network#ethernet",
+			"custom/s-foam",
+			"battery",
+			"custom/s-gray",
+			"clock"
+		],
+
+		"custom/s-gray": {
+			"format": "∼",
+			"interval": "once",
+			"tooltip": false
+		},
+		"custom/s-foam": {
+			"format": "│",
+			"interval": "once",
+			"tooltip": false
+		},
+		"custom/s-rose": {
+			"format": "│",
+			"interval": "once",
+			"tooltip": false
+		},
+
+		"tray": {
+			"icon-size": 20,
+			"spacing": 0,
+			"show-passive-items": true
+		},
+		"power-profiles-daemon": {
+			"format": "PWR: {profile}",
+			"tooltip": true
+		},
+		"custom/notifs": {
+			"exec": "makoctl mode | grep -qi dnd && echo 󰂛 || echo 󰂚",
+			"interval": 1,
+			"on-click": "makoctl mode -t dnd",
+			"on-click-right": "makoctl dismiss -a",
+			"format": "{}",
+			"tooltip": false
+		},
+		"idle_inhibitor": {
+			"format": "{icon}",
+			"format-icons": {
+				"activated": "󰅶",
+				"deactivated": "󰾪"
+			},
+			"tooltip": false
+		},
+		"custom/updates": {
+			"format": "{}",
+			"interval": 3600,
+			"exec": "count=$(pkcon get-updates | grep -E '\\.(x86_64|noarch|i686)' | wc -l); [ \"$count\" -gt 0 ] && echo \"UPDATES: $count\"",
+			//"exec": "echo UPDATES: 9999",
+			"tooltip": false
+		},
+		"wireplumber#sink": {
+			"format": "SINK: {volume}%",
+			"format-muted": "SINK: MUTE",
+			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+			"scroll-step": 5
+		},
+		"wireplumber#source": {
+			"node-type": "Audio/Source",
+			"format": "SOURCE: {volume}%",
+			"format-muted": "SOURCE: MUTE",
+			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+			"scroll-step": 5
+		},
+		"bluetooth": {
+			"format": "BT: {status}",
+			"format-connected": "BT: Connected",
+			"format-connected-battery": "BT: Connected {device_battery_percentage}%",
+			"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+			"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+			"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+			"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+		},
+		"network#ethernet": {
+			"interval": 10,
+			"interface": "e*",
+			"format-ethernet": "ETH: {ipaddr}",
+			"format-disconnected": "ETH: N/A" 
+		},
+		"network#wlan": {
+			"interval": 10,
+			"interface": "wl*",
+			"format-wifi": "WLAN: {ipaddr} {signalStrength}% {essid}",
+			"format-disconnected": "WLAN: N/A",
+			"max-length": 30
+		},
+		"battery": {
+			"format": "BAT0: {capacity}%{time}",
+			"format-time": " {H}:{m} left",
+			"format-icons": {
+				"default": [""],
+				"charging": ["Charging"]
+			},
+			"events": {
+				"on-discharging-warning": "notify-send -u critical -t 10000 -h string:x-canonical-private-synchronous:battery-alert \"Warning\" \"Low battery, please plug in the device.\"",
+				"on-discharging-critical": "notify-send -u critical -t 10000 -h string:x-canonical-private-synchronous:battery-alert \"Critical\" \"Very low battery. Charge immediately, or the device will shut down!\" && pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga"
+			},
+			"states": {
+				"warning": 30,
+				"critical": 15
+			}
+		},
+		"clock": {
+			"interval": 1,
+			"format": "{:%w-%Y-%m-%d %I:%M:%S %p}"
+		}
+	}
+]

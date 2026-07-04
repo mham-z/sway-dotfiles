@@ -18,7 +18,7 @@ These dotfiles are meant for Fedora Linux 43 or newer. I will only document the 
 - flameshot
 - dolphin
 - playerctl
-- luajit
+- waybar
 - wlsunset
 - wl-paste
 - adw-gtk3-theme
@@ -32,7 +32,6 @@ These dotfiles are meant for Fedora Linux 43 or newer. I will only document the 
 - adw-gtk3-dark
 
 ## Compiled Binaries
-- [luastatus](https://github.com/shdown/luastatus) (use luajit)
 - [tofi](https://github.com/philj56/tofi)
 - [pulsemixer](https://github.com/GeorgeFilipkin/pulsemixer) (pip)
 - [cmd-polkit](https://github.com/OmarCastro/cmd-polkit)

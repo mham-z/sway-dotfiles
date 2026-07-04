@@ -1,0 +1,145 @@
+/*----------------MAIN----------------------*/
+
+@import "./rose-pine.css";
+
+* {
+	all: unset;
+	font-family: NotoSansM Nerd Font;
+	font-size: 10pt;
+}
+
+#waybar {
+	background: alpha(@base, 1);
+	color: white;
+}
+tooltip {
+	background: rgba(0, 0, 6, 0.8);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	box-shadow: none;
+}
+tooltip label {
+	font-size: 14px;
+	padding: 3px 5px;
+	text-shadow: none;
+}
+
+/*---------------TOPBAR---------------------*/
+
+#workspaces button {
+	background-color: @overlay;
+	border: 0px solid rgba(255,255,255,0.05);
+	margin: 0px 0px;
+	padding: 0px 10px;
+	min-width: 24px;
+}
+#workspaces button.empty {
+	padding: 0px 2px;
+	min-width: 21px;
+}
+#workspaces button.focused {
+	background-color: @iris;
+	color: @base;
+}
+#workspaces button.urgent {
+	background-color: @love;
+	color: @base;
+}
+
+/* CAVA */
+#custom-cava-left, #custom-cava-right {
+	padding: 0px 4px;
+	color: @foam;
+}
+
+/*--------------BOTTOMBAR-------------------*/
+
+/* SEPARATORS */
+#custom-s-gray {
+	color: #718ba6;
+	margin: 0px 12px;
+}
+#custom-s-foam {
+	color: #9ccfd8;
+	margin: 0px 6px;
+	font-size: 8pt;
+}
+#custom-s-rose {
+	color: #ebbcba;
+	margin: 0px 6px;
+	font-size: 8pt;
+}
+
+/* TRAY */
+#tray {
+	margin-right: 0px;
+	margin-left: 4px;
+}
+#tray menu {
+	background: @base;
+	padding: 3px;
+	border: 1px solid @iris;
+}
+#tray menuitem {
+	background: @highlightLow;
+	border: 1px solid alpha(@iris, 0.1);
+	margin: 1px;
+	padding: 0px;
+}
+#tray menuitem label {
+	font-size: 14px;
+	padding: 0px 3px 0px 3px;
+}
+#tray menuitem:hover {
+    background: @highlightMed;
+	transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+/* PPD */
+#power-profiles-daemon {
+	color: @rose;
+}
+
+/* ICONS */
+#custom-notifs, #idle_inhibitor {
+	font-size: 13pt;
+	color: @rose;
+	margin: 0px 10px 0px 0px;
+}
+
+/* UPDATES */
+#custom-updates {
+	color: @gold;
+	margin: 0px 0px 0px 6px;
+}
+
+/* WIREPLUMBER */
+#wireplumber {
+	color: @rose;
+}
+
+/* BLUETOOTH */
+#bluetooth {
+	color: @foam;
+}
+
+/* NETWORK */
+#network {
+	color: @foam;
+}
+
+/* BATTERY */
+#battery {
+	color: @foam;
+}
+#battery.warning {
+	color: @gold;
+}
+#battery.critical {
+	color: @love;
+}
+
+/* CLOCK */
+#clock {
+	color: @iris;
+	margin-right: 6px;
+}
