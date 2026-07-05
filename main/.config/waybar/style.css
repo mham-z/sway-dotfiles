@@ -59,14 +59,24 @@ tooltip label {
 	margin: 0px 12px;
 }
 #custom-s-foam {
-	color: #9ccfd8;
+	color: @foam;
 	margin: 0px 6px;
 	font-size: 8pt;
 }
 #custom-s-rose {
-	color: #ebbcba;
+	color: @rose;
 	margin: 0px 6px;
 	font-size: 8pt;
+}
+#custom-s-gold {
+	color: @gold;
+	margin: 0px 6px;
+	font-size: 8pt;
+}
+
+/* SENSORS */
+#cpu, #custom-cpu-temp, #custom-dgpu-load, #custom-dgpu-temp, #memory, #disk, #custom-fan1, #custom-fan2 {
+	color: @gold;
 }
 
 /* TRAY */

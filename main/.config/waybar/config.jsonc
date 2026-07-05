@@ -25,7 +25,20 @@
 		"fixed-center": false,
 
 		"modules-left": ["tray", "custom/s-gray", "power-profiles-daemon", "custom/s-rose", "custom/notifs", "idle_inhibitor", "custom/updates"],
-		"modules-center": ["custom/s-gray"],
+		"modules-center": [
+			"cpu",
+			"custom/cpu-temp",
+			"custom/s-gold",
+			"custom/dgpu-load",
+			"custom/dgpu-temp",
+			"custom/s-gold",
+			"memory",
+			"custom/s-gold",
+			"disk",
+			"custom/s-gold",
+			"custom/fan1",
+			"custom/fan2"
+		],
 		"modules-right": [
 			"wireplumber#sink",
 			"custom/s-rose",
@@ -42,6 +55,7 @@
 			"clock"
 		],
 
+		// Separators
 		"custom/s-gray": {
 			"format": "∼",
 			"interval": "once",
@@ -57,7 +71,60 @@
 			"interval": "once",
 			"tooltip": false
 		},
+		"custom/s-gold": {
+			"format": "│",
+			"interval": "once",
+			"tooltip": false
+		},
 
+		// Center
+		"cpu": {
+			"interval": 2,
+			"format": "CPU: {usage}% "
+		},
+
+		"memory": {
+			"interval": 2,
+			"format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB"
+		},
+
+		"disk": {
+			"interval": 10,
+			"path": "/",
+			"format": "SSD: {used} / {total}"
+		},
+
+		"custom/cpu-temp": {
+			"interval": 5,
+			"exec": "awk '{printf \"%.0f\", $1/1000}' /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input",
+			"format": "{}°"
+		},
+
+		"custom/fan1": {
+			"interval": 2,
+			"exec": "bash -c 'v=\"$(cat /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon*/fan1_input 2>/dev/null) RPM\"; [ \"$v\" = \"65535 RPM\" ] && v=DEAD; echo ${v:-N/A}'",
+			"format": "FAN1: {} ⁃ "
+		},
+
+		"custom/fan2": {
+			"interval": 2,
+			"exec": "bash -c 'v=\"$(cat /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon*/fan2_input 2>/dev/null) RPM\"; [ \"$v\" = \"65535 RPM\" ] && v=DEAD; echo ${v:-N/A}'",
+			"format": "FAN2: {}"
+		},
+
+		"custom/dgpu-load": {
+			"interval": 2,
+			"exec": "bash -c 'GPU=0000:01:00.0; [ \"$(< /sys/bus/pci/devices/$GPU/power/runtime_status)\" != active ] && { echo N/A; exit; }; nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null || echo N/A'",
+			"format": "GPU: {}% "
+		},
+
+		"custom/dgpu-temp": {
+			"interval": 5,
+			"exec": "bash -c 'GPU=0000:01:00.0; [ \"$(< /sys/bus/pci/devices/$GPU/power/runtime_status)\" != active ] && { echo N/A; exit; }; nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits 2>/dev/null || echo N/A'",
+			"format": "{}°"
+		},
+
+		// Left
 		"tray": {
 			"icon-size": 20,
 			"spacing": 0,
@@ -90,6 +157,8 @@
 			//"exec": "echo UPDATES: 9999",
 			"tooltip": false
 		},
+
+		// Right
 		"wireplumber#sink": {
 			"format": "SINK: {volume}%",
 			"format-muted": "SINK: MUTE",
