@@ -127,6 +127,11 @@ tooltip label {
 	color: @rose;
 }
 
+/* BACKLIGHT */
+#backlight {
+	color: @rose;
+}
+
 /* BLUETOOTH */
 #bluetooth {
 	color: @foam;

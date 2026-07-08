@@ -43,6 +43,8 @@
 			"wireplumber#sink",
 			"custom/s-rose",
 			"wireplumber#source",
+			"custom/s-rose",
+			"backlight",
 			"custom/s-gray",
 			"bluetooth",
 			"custom/s-foam",
@@ -171,6 +173,10 @@
 			"format-muted": "SOURCE: MUTE",
 			"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
 			"scroll-step": 5
+		},
+		"backlight": {
+			"format": "BKL: {percent}%",
+			"min-brightness": 1
 		},
 		"bluetooth": {
 			"format": "BT: {status}",
