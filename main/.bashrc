@@ -92,3 +92,4 @@ _build_prompt() {
 }
 
 PROMPT_COMMAND='_build_prompt'
+. "$HOME/.rokit/env"
