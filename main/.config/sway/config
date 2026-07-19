@@ -25,6 +25,7 @@ output * bg $surface solid_color
 
 
 # exec uwsm finalize sway
+exec_always pkill -9 -f cava && pkill -9 -f cava-waybar
 
 exec swayidle -w \
 	timeout 300 'wlock -a 524f67 -i 403d52 -c 000000 -f eb6f92' \
