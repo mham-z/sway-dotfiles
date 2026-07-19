@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# battery
+if grep -q "0" /sys/class/power_supply/AC/online 2>/dev/null; then
+    echo ""
+    exit 0
+fi
+
 bar="▁▂▃▄▅▆▇█"
 dict="s/;//g;"
 
