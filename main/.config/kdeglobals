@@ -1,5 +1,5 @@
 [General]
-TerminalApplication=kitty.desktop
+TerminalApplication=foot.desktop
 
 [KDE]
 widgetStyle=qt6ct-style
