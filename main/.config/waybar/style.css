@@ -111,7 +111,7 @@ tooltip label {
 
 /* ICONS */
 #custom-notifs, #idle_inhibitor {
-	font-size: 13pt;
+	font-size: 12pt;
 	color: @rose;
 	margin: 0px 10px 0px 0px;
 }
