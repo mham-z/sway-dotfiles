@@ -6,6 +6,14 @@ RESET="\033[0m"
 GREEN="\033[32m"
 BLUE="\033[34m"
 
+
+if [ ! -f "/usr/local/bin/start-sway" ]; then
+    echo "start-sway not found in /usr/local/bin/"
+    echo "installing it requires sudo"
+    sudo install -Dm755 "$DIR/start-sway" /usr/local/bin/start-sway
+fi
+
+
 DRY_RUN=""
 for arg in "$@"; do
     if [ "$arg" = "-n" ] || [ "$arg" = "--dry-run" ]; then

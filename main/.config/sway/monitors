@@ -1,2 +1,0 @@
-bindsym $mod+K exec swaymsg "output eDP-1 mode --custom 2560x1600"
-bindsym $mod+L exec swaymsg "output eDP-1 mode --custom 1920x1200"
